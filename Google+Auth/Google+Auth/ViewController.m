@@ -60,7 +60,6 @@ NSString *visibleactions = @"http://schemas.google.com/AddActivity";
                 NSString* key = [keyValue objectAtIndex:0];
                 if ([key isEqualToString:@"code"]) {
                     verifier = [keyValue objectAtIndex:1];
-//                    NSLog(@"verifier %@",verifier);
                     break;
                 }
             }
@@ -72,7 +71,7 @@ NSString *visibleactions = @"http://schemas.google.com/AddActivity";
         if (!verifier==0) {
             [self showAlertViewWithTitle:@"" message:@"Please wait" okAction:NO];
             
-            NSString *data = [NSString stringWithFormat:@"code=%@&client_id=%@&client_secret=%@&redirect_uri=%@&grant_type=authorization_code", verifier,client_id,secret,callbakc];
+            NSString *data = [NSString stringWithFormat:@"code=%@&client_id=%@&redirect_uri=%@&grant_type=authorization_code", verifier,client_id,callbakc];
             NSString *url = [NSString stringWithFormat:@"https://accounts.google.com/o/oauth2/token"];
             NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
             [request setHTTPMethod:@"POST"];
